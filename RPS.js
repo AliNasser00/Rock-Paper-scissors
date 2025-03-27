@@ -1,3 +1,12 @@
+const Rockbtn = document.querySelector("#rock");
+const Paperbtn = document.querySelector("#paper");
+const Scissorsbtn = document.querySelector("#scissors");
+const result = document.querySelector("#result");
+const para = document.createElement("p");
+const playerCounter = document.querySelector("#pc")
+const computerCounter = document.querySelector("#cc")
+
+result.appendChild(para);
 //we need to create two counters
 let player = 0;
 let comp = 0;
@@ -17,63 +26,146 @@ function compChoice()
         return "paper";
     }
 }
-//we need a function that take the user input and make it spell insensative 
-function userChoice()
-{
-    let user = prompt("your turn: ").toLowerCase();
-    return user;
-}
 //we need a function that declears the winner and increse the counter for the winner
 function winner(player1, computer)
 {
     if(player1 === "rock" && computer ==="scissors")
     {
-        console.log("you Win!");
+        result.textContent = "you Win";
+        para.textContent = "computer chose scissors!";
         return player++;
     }
     else if(player1 === "rock" && computer ==="rock")
         {
-             console.log("draw");
+            result.textContent = "Draw";
+            para.textContent = "computer chose Rock!";
         }
     else  if(player1 === "rock" && computer ==="paper")
         {
-            console.log("you lost!");
+            result.textContent = "you Lost";
+            para.textContent = "computer chose Paper!";
             return comp++;
         }
     else if(player1 === "scissors" && computer ==="scissors")
             {
-                console.log("draw");
+                result.textContent = "Draw"
+                para.textContent = "computer chose scissors!";
             }
     else  if(player1 === "scissors" && computer ==="rock")
         {
-            console.log("you lost!");
+            result.textContent = "you lost";
+            para.textContent = "computer chose Rock!";
             return comp++;
         }
     else  if(player1 === "scissors" && computer ==="paper")
             {
-                 console.log("you Win!");
+                result.textContent = "you Win"
+                para.textContent = "computer chose Paper!";
                 return player++;
             } 
     else  if(player1 === "paper" && computer ==="rock")
             {
-         console.log("you Win!");
-        return player++;
+            result.textContent = "you Win";
+            para.textContent = "computer chose Rock!";
+            return player++;
             }
     else  if(player1 === "paper" && computer ==="scissors")
             {
-             console.log("you lost!");
+            result.textContent = "you lost"
+            para.textContent = "computer chose scissors!";
             return comp++;
             }
     else  if(player1 === "paper" && computer ==="paper")
             {
-                 console.log("draw"); 
+             result.textContent = "draw";
+             para.textContent = "computer chose Paper!";
             }
 }
-do {
-let comp_choice = compChoice();
-let user_choice = userChoice();
-console.log(winner(comp_choice, user_choice));
-console.log(`player:  ${player}`);
-console.log(`computer: ${comp}`);
-}
-while ((player + comp) < 5)
+
+    Rockbtn.addEventListener('click', ()=> {
+        const computerChoice = compChoice();
+        const playerChoice = 'rock';
+        winner(playerChoice, computerChoice);
+        if((player + comp) < 5){
+         playerCounter.textContent = `Player: ${player}`;
+         computerCounter.textContent = `CPU : ${comp}`;
+        }
+        else{
+            if (player > comp){
+            result.textContent = "Game Over you won";
+            player = 0;
+            comp = 0;
+            playerCounter.textContent = `Player: ${player}`;
+            computerCounter.textContent = `CPU : ${comp}`;
+            }
+            else{
+            result.textContent = "Game Over computer won";
+            player = 0;
+            comp = 0;
+            playerCounter.textContent = `Player: ${player}`;
+            computerCounter.textContent = `CPU : ${comp}`;
+            }
+            }
+            
+
+        
+    })
+
+    Paperbtn.addEventListener('click', ()=> {
+        const computerChoice = compChoice();
+        const playerChoice = 'paper';
+        winner(playerChoice, computerChoice);
+        if((player + comp) < 5){
+            playerCounter.textContent = `Player: ${player}`;
+            computerCounter.textContent = `CPU : ${comp}`;
+           }
+           else{
+               if (player > comp){
+               result.textContent = "Game Over you won";
+               player = 0;
+               comp = 0;
+               playerCounter.textContent = `Player: ${player}`;
+               computerCounter.textContent = `CPU : ${comp}`;
+               }
+               else{
+               result.textContent = "Game Over computer won";
+               player = 0;
+               comp = 0;
+               playerCounter.textContent = `Player: ${player}`;
+               computerCounter.textContent = `CPU : ${comp}`;
+               }
+               }
+
+    })
+
+    Scissorsbtn.addEventListener('click', ()=> {
+        const computerChoice = compChoice();
+        const playerChoice = 'scissors';
+        winner(playerChoice, computerChoice);
+        if((player + comp) < 5){
+            playerCounter.textContent = `Player: ${player}`;
+            computerCounter.textContent = `CPU : ${comp}`;
+           }
+           else{
+               if (player > comp){
+               result.textContent = "Game Over you won";
+               player = 0;
+               comp = 0;
+               playerCounter.textContent = `Player: ${player}`;
+               computerCounter.textContent = `CPU : ${comp}`;
+               }
+               else{
+               result.textContent = "Game Over computer won";
+               player = 0;
+               comp = 0;
+               playerCounter.textContent = `Player: ${player}`;
+               computerCounter.textContent = `CPU : ${comp}`;
+               }
+               }
+    })
+
+
+
+
+
+
